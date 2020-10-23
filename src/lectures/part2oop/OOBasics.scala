@@ -10,7 +10,7 @@ object OOBasics extends App {
 
 
 // constructor
-class Person(name: String, val age: Int) {
+class Person(name: String, val age: Int = 0) {
   // body
   val x = 2
 
@@ -23,6 +23,9 @@ class Person(name: String, val age: Int) {
   def greek() = println(s"Hi, I am $name")
 
   // multiple constructors
+  def this(name: String) = this (name, 0)
+  def this() = this("Argyn Khuan")
+
 }
 
 // class parameters are NOT FIELDS
