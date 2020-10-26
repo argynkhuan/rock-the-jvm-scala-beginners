@@ -18,6 +18,7 @@ object OOBasics extends App {
   val counter = new Counter
   counter.inc.print
   counter.inc.inc.inc.print
+  counter.inc(10).print
 }
 
 
