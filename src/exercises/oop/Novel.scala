@@ -1,8 +1,6 @@
 package exercises.oop
 
-class Novel(name: String,year: Int, author: Writer) {
-
-  def this(year: Int) = this(this.name, year, this.author)
+class Novel(name: String, year: Int, author: Writer) {
 
   def authorAge: Int = author.age
 
