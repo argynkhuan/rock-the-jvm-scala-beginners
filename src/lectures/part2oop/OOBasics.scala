@@ -19,85 +19,86 @@ object OOBasics extends App {
   counter.inc.print
   counter.inc.inc.inc.print
   counter.inc(10).print
-}
 
+  // constructor
+  class Person(name: String, val age: Int = 0) {
+    // body
+    val x = 2
 
-// constructor
-class Person(name: String, val age: Int = 0) {
-  // body
-  val x = 2
+    println("Person class init...")
 
-  println("Person class init...")
+    // method
+    def greet(name: String): Unit = println(s"${this.name} says: Hi, $name")
 
-  // method
-  def greet(name: String): Unit = println(s"${this.name} says: Hi, $name")
+    // overloading
+    def greek() = println(s"Hi, I am $name")
 
-  // overloading
-  def greek() = println(s"Hi, I am $name")
+    // multiple constructors
+    def this(name: String) = this(name, 0)
 
-  // multiple constructors
-  def this(name: String) = this(name, 0)
-
-  def this() = this("Argyn Khuan")
-
-}
-
-/*
-  Novel and a Writer
-
-  Writer: name, surname, year
-    - method fullName
-
-  Novel: name, year of release, author
-    - authorAge
-    - isWrittenBy(author)
-    - copy (new year of release) = new instance of Novel
- */
-
-
-class Writer(firstName: String, surname: String, val year: Int) {
-  def fullName(): String = firstName + " " + surname
-}
-
-class Novel(name: String, year: Int, author: Writer) {
-
-  def authorAge: Int = year - author.year
-
-  def isWrittenBy(author: Writer): Boolean = this.author == author
-
-  def copy(newYear: Int): Novel = new Novel(name, newYear, author)
-
-}
-
-/*
-  Counter class
-    - receives an Int value
-    - method current count
-    - method to increment/decrement => new Counter
-    - overload inc/dec to receive an amount
-*/
-
-class Counter(val count: Int = 0) {
-  def inc: Counter = {
-    println("incrementing")
-    new Counter(count + 1) // immutability
+    def this() = this("Argyn Khuan")
   }
 
-  def dec: Counter = {
-    println("decrementing")
-    new Counter(count - 1)
+  /*
+
+    Novel and a Writer
+
+    Writer: name, surname, year
+      - method fullName
+
+    Novel: name, year of release, author
+      - authorAge
+      - isWrittenBy(author)
+      - copy (new year of release) = new instance of Novel
+
+  */
+
+
+  class Writer(firstName: String, surname: String, val year: Int) {
+    def fullName(): String = firstName + " " + surname
   }
 
-  def inc(n: Int): Counter =
-    if (n <= 0) this
-    else inc.inc(n - 1)
+  class Novel(name: String, year: Int, author: Writer) {
+
+    def authorAge: Int = year - author.year
+
+    def isWrittenBy(author: Writer): Boolean = this.author == author
+
+    def copy(newYear: Int): Novel = new Novel(name, newYear, author)
+
+  }
+
+  /*
+    Counter class
+      - receives an Int value
+      - method current count
+      - method to increment/decrement => new Counter
+      - overload inc/dec to receive an amount
+  */
+
+  class Counter(val count: Int = 0) {
+    def inc: Counter = {
+      println("incrementing")
+      new Counter(count + 1) // immutability
+    }
+
+    def dec: Counter = {
+      println("decrementing")
+      new Counter(count - 1)
+    }
+
+    def inc(n: Int): Counter =
+      if (n <= 0) this
+      else inc.inc(n - 1)
 
 
-  def dec(n: Int): Counter =
-    if (n <= 0) this
-    else dec.dec(n - 1)
+    def dec(n: Int): Counter =
+      if (n <= 0) this
+      else dec.dec(n - 1)
 
-  def print: Unit = println(count)
+    def print: Unit = println(count)
+  }
+
 }
 
 
