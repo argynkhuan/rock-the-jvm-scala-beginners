@@ -45,4 +45,23 @@ object MethodNotations extends App {
   // apply
   println(mary.apply())
   println(mary()) // equivalent
+
+
+  /*
+
+      1. Overload the + operator
+         mary + "the rockstar" => new Person "Mary (the rockstar)"
+
+      2. Add an age to the Person class
+         Add an unary + operator => new person with the age + 1
+         +mary => mary with the age incrementer
+
+      3. Add a "learns" method in the Person class => "Mary learns Scala"
+         Add a learnsScala method, calls learns method with "Scala".
+         Use it in postfix notation.
+
+      4. Overload the apply method
+         mary.apply(2) => "Mary watched Inception 2 times"
+
+   */
 }
