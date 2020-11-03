@@ -3,10 +3,12 @@ package lectures.part2oop
 
 object MethodNotations extends App {
 
-  class Person(val name: String, favoriteMovie: String) {
+  class Person(val name: String, favoriteMovie: String,val age: Int = 0) {
     def likes(movie: String): Boolean = movie == favoriteMovie
     def +(person: Person) = s"${this.name} is hanging with ${person.name}"
+    def +(nickname: String) = new Person(s"$name ($nickname)", favoriteMovie)
     def unary_! : String = s"$name, hello !"
+    def unary_+ : Person = new Person(name, favoriteMovie, age + 1)
     def isAlive : Boolean = true
 
     def apply(): String = s"Hi, my name is $name, and I like $favoriteMovie"
@@ -64,4 +66,9 @@ object MethodNotations extends App {
          mary.apply(2) => "Mary watched Inception 2 times"
 
    */
+
+  println((mary + "the Rockstar")())
+  println((mary + "the Rockstar").apply())
+  println((+mary).age)
+
 }
