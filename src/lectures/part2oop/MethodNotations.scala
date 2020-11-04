@@ -1,5 +1,7 @@
 package lectures.part2oop
 
+import scala.language.postfixOps
+
 
 object MethodNotations extends App {
 
@@ -10,8 +12,10 @@ object MethodNotations extends App {
     def unary_! : String = s"$name, hello !"
     def unary_+ : Person = new Person(name, favoriteMovie, age + 1)
     def isAlive : Boolean = true
-
     def apply(): String = s"Hi, my name is $name, and I like $favoriteMovie"
+    def apply(n: Int): String = s"$name watched $favoriteMovie $n times"
+    def learns(thing: String) = s"$name is learning $thing"
+    def learnsScala: String = this learns "Scala"
   }
 
 
@@ -42,7 +46,7 @@ object MethodNotations extends App {
 
   // postfix notation
   println(mary.isAlive)
-  ///println(mary isAlive)
+  println(mary isAlive)
 
   // apply
   println(mary.apply())
@@ -70,5 +74,8 @@ object MethodNotations extends App {
   println((mary + "the Rockstar")())
   println((mary + "the Rockstar").apply())
   println((+mary).age)
+
+  println(mary learnsScala)
+  println(mary(10))
 
 }
