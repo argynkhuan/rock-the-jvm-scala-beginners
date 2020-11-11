@@ -3,9 +3,10 @@ package lectures.part2oop
 object InheritanceAndTraits extends App {
 
   // single class inheritance
-  class Animal {
+  sealed class Animal {
     val creatureType = "Wild"
     def eat = println("nomnom")
+    final def feat = println("feat")
   }
 
   class Cat extends Animal {
@@ -29,7 +30,10 @@ object InheritanceAndTraits extends App {
   // overriding
   class Dog(override val creatureType: String) extends Animal {
     //override val creatureType: String = "domestic"
-    override def eat: Unit = println("crunch, crunch")
+    override def eat: Unit =  {
+      super.eat
+      println("crunch, crunch")
+    }
   }
 
   val dog = new Dog("K9")
@@ -43,5 +47,14 @@ object InheritanceAndTraits extends App {
   unknownAnimal.eat
 
   // overriding vs overloading
+
+  // super
+
+  // preventing overrides
+  /**
+   * 1. use final on member
+   * 2. use final on class
+   * 3. seal the class = extend in TIS FILE, prevent extension in other files
+   */
 
 }
