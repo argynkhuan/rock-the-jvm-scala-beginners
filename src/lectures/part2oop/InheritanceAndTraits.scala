@@ -36,7 +36,7 @@ object InheritanceAndTraits extends App {
     }
   }
 
-  val dog = new Dog("K9")
+  val dog = new Dog("domestic")
 
   dog.eat
   println(dog.creatureType)
@@ -56,5 +56,4 @@ object InheritanceAndTraits extends App {
    * 2. use final on class
    * 3. seal the class = extend in TIS FILE, prevent extension in other files
    */
-
 }
