@@ -22,21 +22,26 @@ abstract class MyList {
 
 object Empty extends MyList {
 
-  def head: Int = ???
+  def head: Int = throw new NoSuchElementException
 
-  def tail: MyList = ???
+  def tail: MyList = throw new NoSuchElementException
 
-  def isEmpty: Boolean = ???
+  def isEmpty: Boolean = true
 
-  def add(element: Int): MyList = ???
+  def add(element: Int): MyList = new Cons(element, Empty)
 }
 
-class Cons(h: Int, t: Int) extends MyList {
-  override def head: Int = ???
+class Cons(h: Int, t: MyList) extends MyList {
+  override def head: Int = h
 
-  override def tail: MyList = ???
+  override def tail: MyList = t
 
-  override def isEmpty: Boolean = ???
+  override def isEmpty: Boolean = false
 
-  override def add(element: Int): MyList = ???
+  override def add(element: Int): MyList = new Cons(element, this)
+}
+
+object ListTest extends App {
+  val list = new Cons(1, Empty)
+  println(list.head)
 }
