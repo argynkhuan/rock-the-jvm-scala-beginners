@@ -34,8 +34,10 @@ object Generics extends App {
   class InvariantList[A]
   val invariantAnimalList: InvariantList[Animal] = new InvariantList[Animal]
 
-  // 3. Hell, no! CONTRAVARIANCE
+  // 3. Hell, no! CONTRA VARIANCE
   class Trainer[-A]
   val trainer: Trainer[Cat] = new Trainer[Animal]
 
+  // bounded types
+  class Cage[A <: Animal]
 }
