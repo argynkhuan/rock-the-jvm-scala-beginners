@@ -39,5 +39,9 @@ object Generics extends App {
   val trainer: Trainer[Cat] = new Trainer[Animal]
 
   // bounded types
-  class Cage[A <: Animal]
+  class Cage[A <: Animal](animal: A)
+  val cage = new Cage(new Dog)
+
+  class Car
+  val newCage = new Cage(new Car)
 }
