@@ -1,8 +1,9 @@
 package lectures.part2oop
 
 object Generics extends App {
-  class MyList[A] {
+  class MyList[+A] {
     // use the type A
+    def add[B >: A](element: B): MyList[B] = ???
   }
 
   class MyMap[Key, Value]
