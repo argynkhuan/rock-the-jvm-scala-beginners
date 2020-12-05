@@ -4,6 +4,10 @@ object Generics extends App {
   class MyList[+A] {
     // use the type A
     def add[B >: A](element: B): MyList[B] = ???
+    /*
+      A = Cat
+      B = Dog = Animal
+     */
   }
 
   class MyMap[Key, Value]
@@ -28,7 +32,7 @@ object Generics extends App {
 
   val animal: Animal = new Cat
   val animalList: CovariantClass[Animal] = new CovariantClass[Cat]
-  // animalList.add(new Dog) ??? HARD QUESTION.
+  // animalList.add(new Dog) ??? HARD QUESTION => we return a list of Animals
 
 
   // 2. NO = INVARIANCE
@@ -45,4 +49,6 @@ object Generics extends App {
 
   class Car
   val newCage = new Cage(new Car)
+
+  // expand MyList to be generic
 }
