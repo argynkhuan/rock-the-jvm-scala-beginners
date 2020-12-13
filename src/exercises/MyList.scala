@@ -1,6 +1,6 @@
 package exercises
 
-abstract class MyList {
+abstract class MyList[+A] {
   /*
 
     head = first element of the list
@@ -11,13 +11,13 @@ abstract class MyList {
 
    */
 
-  def head: Int
+  def head: A
 
-  def tail: MyList
+  def tail: MyList[A]
 
   def isEmpty: Boolean
 
-  def add(element: Int): MyList
+  def add[B >: A](element: B): MyList[B]
 
   // polymorphic call
   def printElements: String
