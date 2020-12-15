@@ -39,14 +39,14 @@ object Empty extends MyList {
   override def printElements: String = ""
 }
 
-class Cons(h: Int, t: MyList) extends MyList {
-  def head: Int = h
+class Cons[+A](h: A, t: MyList[A]) extends MyList[A] {
+  def head: A = h
 
-  def tail: MyList = t
+  def tail: MyList[A] = t
 
   def isEmpty: Boolean = false
 
-  def add(element: Int): MyList = new Cons(element, this)
+  def add[B >: A](element: B): MyList[B] = new Cons(element, this)
 
   def printElements: String =
     if (t.isEmpty) "" + h
@@ -54,11 +54,6 @@ class Cons(h: Int, t: MyList) extends MyList {
 }
 
 object ListTest extends App {
-  val list = new Cons(1, new Cons(2, new Cons(3, Empty)))
-  println(list.tail.tail.head)
-  println(list.add(4).head)
-  println(list.isEmpty)
 
-  println(list.toString)
 }
 
